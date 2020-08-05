@@ -6,6 +6,10 @@
 
 // const url = 'https://dog.ceo/api/breeds/image/random' - test API from DOG
 
+// create different function for each one operation like createHTML or getData
+// repeat Async and Promises
+// write topics that I did not understant exactly for 100%
+
 
 
 let btnSearch = document.getElementById('search');
@@ -22,12 +26,11 @@ btnSearch.addEventListener('click', () => {
     
     
     fetch(url)
-        // .then(response => console.log(response))
+        //.then(response => console.log(typeOf(response))
         .then(response => response.json())
         .then(data => {
             let lon = data.coord.lon;
             let lat = data.coord.lat;
-            console.log(data);  //get all data
             let cityName = data.name; //get sity name
             let abbrContry = data.sys.country; //get country abbreviation 
             let currentWeatherDescr = data.weather[0].description; //get current weather description 
@@ -42,13 +45,15 @@ btnSearch.addEventListener('click', () => {
                     console.log(data.daily)
 
                     var infoSection = document.getElementById('info');
+                    infoSection.innerHTML = ''; //remove all inside info block before get new result
+
                     let numberElement = 0;
 
                     let currentWeather = document.createElement('div');
                     
-                    currentWeather.innerHTML = '<p><strong>City: </strong>' + cityName + '</p>' +
-                                                '<p><strong>Contry: </strong>' + abbrContry + '</p>' +
-                                                '<p><strong>Current weather: </strong>' + currentWeatherDescr + '</p>';
+                    currentWeather.innerHTML = `<p><strong>City: </strong>${cityName}</p>` +
+                                                `<p><strong>Contry: </strong>${abbrContry}</p>` +
+                                                `<p><strong>Current weather: </strong>${currentWeatherDescr}</p>`;
 
 
 
